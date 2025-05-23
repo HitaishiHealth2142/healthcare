@@ -226,7 +226,7 @@
         <h3 style="color: #004d61; margin: 10px 0 5px;">Eye Care</h3>
         <p style="font-size: 0.9em;">Need an ophthalmologist? We can help.</p>
         <p style="color: #004d61; font-size: 0.85em;">📞 +91-98765-43210<br>✉ eye.support@hitaishihealthcare.com</p>
-        <button style="margin-top: 10px; padding: 8px 16px; background: #0077b6; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onmouseover="this.style.background='#005f86'" onmouseout="this.style.background='#0077b6'">Contact Now</button>
+        <button style="margin-top: 10px; padding: 8px 16px; background: #0077b6; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onclick="window.location.href='#contact'" onmouseover="this.style.background='#005f86'" onmouseout="this.style.background='#0077b6'">Contact Now</button>
       </div>
   
       <!-- Dental Care Card -->
@@ -235,7 +235,7 @@
         <h3 style="color: #004d61; margin: 10px 0 5px;">Dental Care</h3>
         <p style="font-size: 0.9em;">Looking for trusted dentists?</p>
         <p style="color: #004d61; font-size: 0.85em;">📞 +91-98765-43220<br>✉ dental.support@hitaishihealthcare.com</p>
-        <button style="margin-top: 10px; padding: 8px 16px; background: #e67e22; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onmouseover="this.style.background='#cf711c'" onmouseout="this.style.background='#e67e22'">Contact Now</button>
+        <button style="margin-top: 10px; padding: 8px 16px; background: #e67e22; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onclick="window.location.href='#contact'" onmouseover="this.style.background='#cf711c'" onmouseout="this.style.background='#e67e22'">Contact Now</button>
       </div>
   
       <!-- ENT Card -->
@@ -244,7 +244,7 @@
         <h3 style="color: #004d61; margin: 10px 0 5px;">ENT Support</h3>
         <p style="font-size: 0.9em;">Connect with ENT specialists.</p>
         <p style="color: #004d61; font-size: 0.85em;">📞 +91-98765-43230<br>✉ ent.support@hitaishihealthcare.com</p>
-        <button style="margin-top: 10px; padding: 8px 16px; background: #8e44ad; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onmouseover="this.style.background='#732d91'" onmouseout="this.style.background='#8e44ad'">Contact Now</button>
+        <button style="margin-top: 10px; padding: 8px 16px; background: #8e44ad; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onclick="window.location.href='#contact'" onmouseover="this.style.background='#732d91'" onmouseout="this.style.background='#8e44ad'">Contact Now</button>
       </div>
   
       <!-- Diagnostics Card -->
@@ -253,7 +253,7 @@
         <h3 style="color: #004d61; margin: 10px 0 5px;">Diagnostics</h3>
         <p style="font-size: 0.9em;">Need tests or scans? Book easily.</p>
         <p style="color: #004d61; font-size: 0.85em;">📞 +91-98765-43240<br>✉ diagnostics@hitaishihealthcare.com</p>
-        <button style="margin-top: 10px; padding: 8px 16px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onmouseover="this.style.background='#1e8449'" onmouseout="this.style.background='#27ae60'">Contact Now</button>
+        <button style="margin-top: 10px; padding: 8px 16px; background: #27ae60; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.85em;" onclick="window.location.href='#contact'" onmouseover="this.style.background='#1e8449'" onmouseout="this.style.background='#27ae60'">Contact Now</button>
       </div>
       
     </div>
@@ -335,7 +335,7 @@
         </p>
       </div>
     <!-- Left: Input Fields -->
-    <div style="flex:1 1 55%; min-width:300px;">
+    <div id="contact" style="flex:1 1 55%; min-width:300px;">
       <h2 style="margin-bottom:10px;color:#004d61;">Need Help? Reach Out to Us</h2>
       <p style="margin-bottom:20px;">We’ll connect you with the best doctors and services based on your needs.</p>
       <form>
@@ -371,7 +371,7 @@
       const formData = new FormData(this);
       const data = Object.fromEntries(formData);
   
-      fetch('http://localhost:5000/api/contact', {
+      fetch('https://healthcarebackend-vsju.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -386,65 +386,68 @@
       });
     });
   </script>
-  <!-- footer -->
-  <footer style="background-color: black; color: white; padding: 30px 10%; font-family: Arial, sans-serif; margin-top: 30px;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-        <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Quick Links</h3>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
-        </div>
-        <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Services</h3>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
-        </div>
-        <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Contact Us</h3>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
-            <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
-        </div>
-        <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Subscribe to News Letter</h3>
-            <input type="email" placeholder="Enter your email" style="padding: 10px; margin-bottom: 10px; width: 80%; border: none; border-radius: 5px;">
-            <button style="padding: 10px; width: 50%; border: none; border-radius: 5px; background-color: teal; color: white; cursor: pointer;">Subscribe</button>
-        </div>
-        <div style="flex: 1; min-width: 200px;">
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Contact</h3>
-            <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
-                <i class="fas fa-envelope"></i>
-                <span>info@hitaishihealth.com</span>
+
+
+   <!-- footer -->
+    <footer style="background-color: black; color: white; padding: 30px 10%; font-family: Arial, sans-serif; margin-top: 30px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Quick Links</h3>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
+                <a href="about.html#why-choose-u" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
             </div>
-            <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
-                <i class="fas fa-phone"></i>
-                <span>8790170525</span>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Services</h3>
+                <a href="clinics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
+                <a href="Diagnostics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
+                <a href="healthRecords.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
+                <a href="blood.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
+                <a href="doctors.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
             </div>
-            <h3 style="margin-bottom: 15px; font-size: 18px;">Social Media</h3>
-            <div>
-                <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-                <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
-                <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
-                <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
-                <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Contact Us</h3>
+                <a href="inventory.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
+                <a href="inventory.html#faq" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Subscribe to News Letter</h3>
+                <input type="email" placeholder="Enter your email" style="padding: 10px; margin-bottom: 10px; width: 80%; border: none; border-radius: 5px;">
+                <button style="padding: 10px; width: 50%; border: none; border-radius: 5px; background-color: teal; color: white; cursor: pointer;">Subscribe</button>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Contact</h3>
+                <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@hitaishihealth.com</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                    <i class="fas fa-phone"></i>
+                    <span>8790170525</span>
+                </div>
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Social Media</h3>
+                <div>
+                    <a href="https://www.instagram.com/hitaishihealthcare/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61575554344989" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/HitaishiHealth" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://in.linkedin.com/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@HitaishiHealthCare" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div style="text-align: center; padding-top: 20px; border-top: 1px solid gray; margin-top: 20px;">
-        <p>© Copyright 2025 By Hitaishi Health Service. All Rights Reserved</p>
-        <a href="#" style="color: white; text-decoration: none;">Sitemap</a> |
-        <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
-        <a href="#" style="color: white; text-decoration: none;">Terms of Use</a>
-    </div>
-</footer>
+        <div style="text-align: center; padding-top: 20px; border-top: 1px solid gray; margin-top: 20px;">
+            <p>© Copyright 2025 By Hitaishi Health Service. All Rights Reserved</p>
+            <a href="#" style="color: white; text-decoration: none;">Sitemap</a> |
+            <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
+            <a href="#" style="color: white; text-decoration: none;">Terms of Use</a>
+        </div>
+    </footer>
+    
 </body>
 </html>

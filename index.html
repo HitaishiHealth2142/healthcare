@@ -6,6 +6,9 @@
     <title>Hitaishi Healthcare Services</title>
     <script defer src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+<!-- FontAwesome CDN for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <body style="overflow-x: hidden; margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
@@ -15,199 +18,163 @@
 
 
 
+<!-- Navbar 1 -->
+<nav style="background-color: #007bff; padding: 15px 20px; font-family: sans-serif; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  <div id="navbar1" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
 
-    
-   <!-- Navigation Bar -->
-   <nav style="display: flex; justify-content: space-between; align-items: center; background: #007bff; padding: 15px 40px;">
-    
-    <!-- Logo and Title -->
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <img src="images/Hitaishi HealthCare (1).png" alt="Logo" style="height: 50px;">
+    <!-- Logo & Search -->
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="images/Hitaishi HealthCare (1).png" alt="Logo" style="height: 40px;">
         <div>
-            <h2 style="color: #fff; margin: 0; font-size: 36px;">Hitaishi</h2>
-            <p style="color: #fff; margin: 0; font-size: 18px;">HealthCare Service</p>
+          <h2 style="color: white; margin: 0; font-size: 24px;">Hitaishi</h2>
+          <p style="color: white; margin: 0; font-size: 14px;">HealthCare Service</p>
         </div>
-    </div>
-    
-    <!-- search input icons -->
-    <input type="text" placeholder="Search..." style="padding: 10px; border-radius: 5px; border: none; width: 100px; font-size: 16px;">
-    <!-- <button style="background: #fff; border: none; padding: 10px 15px; border-radius: 5px; font-size: 16px; cursor: pointer;"> -->
-        <i class="fas fa-search" style="margin-left: -90px; color: #fff; font-weight: bolder;"></i>
-
-    <!-- Buttons -->
-    <div style="display: flex; gap: 15px;">
-        <a href="blood.html" style="background: white; color: #007bff; padding: 10px 15px; border-radius: 5px; font-size: 16px; text-decoration: none; font-weight: bold;">
-            ❤️ Blood Donation
-        </a>
-        <a href="clinics.html" style="background: white; color: #007bff; padding: 10px 15px; border-radius: 5px; font-size: 16px; text-decoration: none; font-weight: bold;">
-            Book Appointment
-        </a>
-        <a href="doctors.html" style="background: white; color: #007bff; padding: 10px 15px; border-radius: 5px; font-size: 16px; text-decoration: none; font-weight: bold;">
-            Find a Doctor
-        </a>
-        <a href="clinic.html" style="background: white; color: #007bff; padding: 10px 15px; border-radius: 5px; font-size: 16px; text-decoration: none; font-weight: bold;">
-            Clinic
-        </a>
-        <a href="eyecare.html" style="background: white; color: #007bff; padding: 10px 15px; border-radius: 5px; font-size: 16px; text-decoration: none; font-weight: bold;">
-            Eye Care
-        </a>
+      </div>
+      <div style="position: relative; display: flex; align-items: center; margin-left: 1rem;">
+        <input type="text" placeholder="Search..." style="padding: 8px 30px 8px 10px; border-radius: 5px; border: none; font-size: 14px;">
+        <i class="fas fa-search" style="position: absolute; right: 10px; color: #007bff;"></i>
+      </div>
     </div>
 
-    <!-- Social Media Icons -->
-    <div style="display: flex; align-items: center; gap: 15px;">
-        <a href="https://www.facebook.com/profile.php?id=61575554344989" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="https://x.com/HitaishiHealth" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com/hitaishihealthcare/" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://www.youtube.com/@HitaishiHealthCare" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-youtube"></i>
-        </a>
-        <a href="https://t.me" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-telegram"></i>
-        </a>
-        <a href="https://www.whatsapp.com" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        
-
-        <!-- Display Logged-in User Name -->
-        <!--  <span id="username" style="color: white; font-size: 18px; margin-left: 15px;"></span> -->
-
-        <!-- Profile Icon -->
-        <a href="patientLogin.html" style="color: white; font-size: 22px; text-decoration: none; margin-left: 10px;">
-            <i class="fas fa-user-circle"></i>
-        </a>
+    <!-- Hamburger -->
+    <div onclick="toggleMenu()" style="display: none; flex-direction: column; gap: 4px; cursor: pointer;" id="hamburgerBtn">
+      <div style="width: 25px; height: 3px; background-color: white;"></div>
+      <div style="width: 25px; height: 3px; background-color: white;"></div>
+      <div style="width: 25px; height: 3px; background-color: white;"></div>
     </div>
 
-    </nav>
-    
-    <script>
-        // Simulating getting user data from local storage or API
-        document.addEventListener("DOMContentLoaded", function () {
-            const user = localStorage.getItem("loggedInUser"); // Retrieve stored user
-            if (user) {
-                document.getElementById("username").textContent = user; // Show username if logged in
-            }
-        });
-    
-        // Example: Store username after login (call this after user logs in)
-        function setUser(name) {
-            localStorage.setItem("loggedInUser", name);
-        }
-    
-        // Example: Clear user on logout
-        function logout() {
-            localStorage.removeItem("loggedInUser");
-            window.location.reload(); // Refresh page after logout
-        }
-    </script>
-    
-    
-    <nav style="margin-left: -50px; margin-top: -10px; background-color: #2581de; padding: 1rem 2rem; position: sticky; top: 0; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); z-index: 1000;">
-        <div style="display: flex; align-items: center; max-width: 1200px; margin: 0 auto;">
-            <!-- Home Link -->
-            <div style="margin-right: 1rem;">
-                <a href="HHS.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Home</a>
-            </div>
+    <!-- Links -->
+    <div id="navLinks" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+      <a href="blood.html" style="background: white; color: #007bff; padding: 8px 12px; border-radius: 5px; font-size: 14px; text-decoration: none; font-weight: bold;">❤️ Blood Donation</a>
+      <a href="clinics.html" style="background: white; color: #007bff; padding: 8px 12px; border-radius: 5px; font-size: 14px; text-decoration: none; font-weight: bold;">Book Appointment</a>
+      <a href="doctors.html" style="background: white; color: #007bff; padding: 8px 12px; border-radius: 5px; font-size: 14px; text-decoration: none; font-weight: bold;">Find a Doctor</a>
+      <a href="clinic.html" style="background: white; color: #007bff; padding: 8px 12px; border-radius: 5px; font-size: 14px; text-decoration: none; font-weight: bold;">Clinic</a>
+      <a href="eyecare.html" style="background: white; color: #007bff; padding: 8px 12px; border-radius: 5px; font-size: 14px; text-decoration: none; font-weight: bold;">Eye Care</a>
+    </div>
 
-            <!-- Health Records Dropdown -->
-            <div style="position: relative; margin-right: 1rem;">
-                <a href="healthRecords.html" style="color: white; text-decoration: none;  padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Health&nbsp;Records</a>
-                <div style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; z-index: 1001;">
-                    <a href="bloodtest.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Blood Tests</a>
-                    <a href="donations.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Donations</a>
-                    <a href="inventory.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Inventory</a>
-                </div>
-            </div>
+    <!-- Social -->
+    <div id="socialLinks" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+      <div>
+        <a href="#"><i class="fab fa-facebook" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-twitter" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-instagram" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-linkedin" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-youtube" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-telegram" style="color: white; font-size: 18px;"></i></a>
+        <a href="#"><i class="fab fa-whatsapp" style="color: white; font-size: 18px;"></i></a>
+      </div>
+      <a href="patientLogin.html" style="color: white; font-size: 22px; text-decoration: none;"><i class="fas fa-user-circle"></i></a>
+    </div>
+  </div>
+</nav>
 
-            <!-- Diagnostics Dropdown -->
-            <div style="position: relative; margin-right: 1rem;">
-                <a href="Diagnostics.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Diagnostics</a>
-                <div style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; z-index: 1001;">
-                    <a href="xray.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">X-Ray</a>
-                    <a href="ultrasound.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Ultrasound</a>
-                    <a href="mri.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">MRI</a>
-                </div>
-            </div>
+<!-- Navbar 2 -->
+<nav style="background-color: #2581de; padding: 1rem 2rem; position: sticky; top: 72px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 999;">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+      <a href="HHS.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Home</a>
 
-            <!-- Physicians Dropdown -->
-            <div style="position: relative; margin-right: 1rem;">
-                <a href="Physician.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Physicians</a>
-                <div style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; z-index: 1001;">
-                    <a href="cardiologist.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Cardiologist</a>
-                    <a href="neuralogist.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Neurologist</a>
-                    <a href="dermatologist.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Dermatologist</a>
-                </div>
-            </div>
-
-            <!-- Fertility Dropdown -->
-            <div style="position: relative; margin-right: 1rem;">
-                <a href="fertility.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Fertility</a>
-                <div style="display: none; position: absolute; background-color: white; min-width: 200px; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); border-radius: 5px; overflow: hidden; z-index: 1001;">
-                    <a href="IVF.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">IVF</a>
-                    <a href="iui.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">IUI</a>
-                    <a href="sarogasi.html" style="color: #333; padding: 12px 16px; display: block; text-decoration: none; transition: background-color 0.3s;">Surrogacy</a>
-                </div>
-            </div>
-
-            <!-- AI -->
-            <div style="margin-right: 1rem;">
-                <a href="ai.html" style="max-width: 100px; overflow: hidden; color: white; text-decoration: none; padding: 0.5rem 0.5rem; font-weight: bold; transition: background-color 0.3s; white-space: nowrap;">AI & Blockchain</a>
-            </div>
-
-            <!-- Doctors Link -->
-            <div style="margin-right: 1rem;">
-                <a href="doctor.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Doctors</a>
-            </div>
-
-            <!-- Patients Link -->
-            <div style="margin-right: 1rem;">
-                <a href="patientLogin.html"  style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Patients</a>
-            </div>
-
-
-
-            <!-- Insights Link -->
-            <div style="margin-right: 1rem;">
-                <a href="Dental.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Dental</a>
-            </div>
-            <div style="margin-right: 1rem;">
-                <a href="ENT.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">ENT</a>
-            </div>
-
-            <!-- Contact Link -->
-            <div>
-                <a href="contact.html" style="color: white; text-decoration: none;margin-right: 5px; padding: 0.5rem 1rem; font-weight: bold; transition: background-color 0.3s;">Contact </a>
-            </div>
-            
+      <!-- Dropdown: Health Records -->
+      <div class="nav-dropdown" style="position: relative;">
+        <a href="#" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Health Records</a>
+        <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <a href="bloodtest.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Blood Tests</a>
+          <a href="donations.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Donations</a>
+          <a href="inventory.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Inventory</a>
         </div>
+      </div>
 
-      
-    </nav>
+      <!-- Dropdown: Services -->
+      <div class="nav-dropdown" style="position: relative;">
+        <a href="Diagnostics.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Diagnostic</a>
+        <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <a href="xray.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">X-Ray</a>
+          <a href="ultrasound.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Ultra Sound</a>
+          <a href="mri.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">MRI</a>
+        </div>
+      </div>
+      <!-- Dropdown: Services -->
+      <div class="nav-dropdown" style="position: relative;">
+        <a href="Physician.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Physicians</a>
+        <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <a href="cardiologist.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Cardiologist</a>
+          <a href="neuralogist.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Neurologist</a>
+          <a href="dermatologist.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Dermatologist</a>
+        </div>
+      </div>
+      <!-- Dropdown: Services -->
+      <div class="nav-dropdown" style="position: relative;">
+        <a href="fertility.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Fertility</a>
+        <div class="dropdown-content" style="display: none; position: absolute; background-color: white; min-width: 200px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+          <a href="IVF.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">IVF</a>
+          <a href="iui.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">IUI</a>
+          <a href="sarogasi.html" style="display: block; padding: 10px; color: #333; text-decoration: none;">Sarrogacy</a>
+        </div>
+      </div>
 
-    <!-- for dropdowns -->
-    <script>
-        // JavaScript to handle dropdown visibility
-        document.querySelectorAll('nav > div > div').forEach(navItem => {
-            const dropdown = navItem.querySelector('div');
-            if (dropdown) {
-                navItem.addEventListener('mouseenter', () => {
-                    dropdown.style.display = 'block';
-                });
-                navItem.addEventListener('mouseleave', () => {
-                    dropdown.style.display = 'none';
-                });
-            }
-        });
-    </script>
+      <a href="ai.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">AI & Blockchain</a>
+      <a href="doctor.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Doctors</a>
+      <a href="patientLogin.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Patients</a>
+      <a href="Dental.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Dental</a>
+      <a href="ENT.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">ENT</a>
+      <a href="contact.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; font-weight: bold;">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Responsive & Dropdown Hover -->
+<style>
+  @media (max-width: 768px) {
+    #hamburgerBtn {
+      display: flex !important;
+    }
+
+    #navLinks, #socialLinks {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    #navLinks.active, #socialLinks.active {
+      display: flex;
+    }
+
+    nav div div {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+
+    .dropdown-content {
+      position: static !important;
+      display: block !important;
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .dropdown-content a {
+      padding-left: 1.5rem !important;
+    }
+  }
+
+  .nav-dropdown:hover .dropdown-content {
+    display: block !important;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f0f0f0 !important;
+  }
+</style>
+
+<!-- Hamburger Toggle Script -->
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+    document.getElementById("socialLinks").classList.toggle("active");
+  }
+</script>
+
+
 
     
     <!-- Main Section -->
@@ -2207,28 +2174,28 @@
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Quick Links</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
+                <a href="about.html#why-choose-u" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Services</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
+                <a href="clinics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
+                <a href="Diagnostics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
+                <a href="healthRecords.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
+                <a href="blood.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
+                <a href="doctors.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Contact Us</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
+                <a href="inventory.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
+                <a href="inventory.html#faq" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Subscribe to News Letter</h3>
@@ -2247,11 +2214,11 @@
                 </div>
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Social Media</h3>
                 <div>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/hitaishihealthcare/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61575554344989" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/HitaishiHealth" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://in.linkedin.com/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@HitaishiHealthCare" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>

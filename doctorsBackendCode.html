@@ -206,183 +206,151 @@
 
   <h2 style="text-align:center;">Doctors Directory</h2>
 
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
-    margin: 0;
-    padding: 0;
-  }
+  <!-- Layout Container -->
+  <div style="display: flex; gap: 30px;">
 
-  .layout {
-    display: flex;
-    gap: 30px;
-    padding: 30px;
-  }
+    <!-- Filter Section (Left Side) -->
+    <div style="width: 25%;">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search by Name" 
+        onkeyup="filterDoctors()" 
+        style="padding: 10px; width: 90%; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 15px;" 
+      />
 
-  .filter-section {
-    width: 25%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  }
+      <select id="specializationFilter" onchange="filterDoctors()" style="padding: 10px; width: 100%; margin-bottom: 10px;">
+        <select id="specialization-filter"></select>
+      </select>
 
-  .filter-section input,
-  .filter-section select {
-    padding: 12px;
-    width: 100%;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
-  }
+      <select id="clinicFilter" onchange="filterDoctors()" style="padding: 10px; width: 100%; margin-bottom: 10px;">
+        <select id="clinic-filter"></select>
+      </select>
 
-  .filter-section input:focus,
-  .filter-section select:focus {
-    outline: none;
-    border-color: #007BFF;
-  }
+      <select id="locationFilter" onchange="filterDoctors()" style="padding: 10px; width: 100%; margin-bottom: 10px;">
+        <select id="location-filter"></select>
+      </select>
+    </div>
 
-  #doctorsContainer {
-    width: 75%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
-    gap: 20px;
-  }
+    <!-- Doctors Cards (Right Side) -->
+    <div id="doctorsContainer" style="width: 75%; display: flex; flex-direction: column; gap: 20px;">
+      <!-- Doctor cards will be inserted here -->
+    </div>
 
-  .doctor-card {
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
-  }
-
-  .doctor-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  }
-
-  .doctor-card h3 {
-    margin-top: 0;
-    color: #007BFF;
-  }
-</style>
-
-<!-- Layout Container -->
-<div class="layout">
-
-  <!-- Filter Section (Left Side) -->
-  <div class="filter-section">
-    <input 
-      type="text" 
-      id="searchInput" 
-      placeholder="Search by Name" 
-      onkeyup="filterDoctors()" 
-    />
-
-    <select id="specializationFilter" onchange="filterDoctors()">
-      <option value="">All Specializations</option>
-      <option value="Pediatrician">Pediatrician</option>
-      <option value="Dermatologist">Dermatologist</option>
-      <option value="Cardiologist">Cardiologist</option>
-    </select>
-
-    <select id="clinicFilter" onchange="filterDoctors()">
-      <option value="">All Clinics</option>
-      <option value="City Health Clinic">City Health Clinic</option>
-      <option value="Sunshine Medical Center">Sunshine Medical Center</option>
-      <option value="Wellness Point">Wellness Point</option>
-    </select>
-
-    <select id="locationFilter" onchange="filterDoctors()">
-      <option value="">All Locations</option>
-      <option value="Delhi">Delhi</option>
-      <option value="Mumbai">Mumbai</option>
-      <option value="Bangalore">Bangalore</option>
-    </select>
   </div>
 
-  <!-- Doctors Cards (Right Side) -->
-  <div id="doctorsContainer">
-    <!-- Doctor cards will be inserted here -->
-  </div>
-</div>
-
-<script>
-  const doctors = [
-    {
-      name: "Dr. Anjali Verma",
-      specialization: "Pediatrician",
-      clinic: "City Health Clinic",
-      location: "Delhi"
-    },
-    {
-      name: "Dr. Rajeev Kapoor",
-      specialization: "Dermatologist",
-      clinic: "Sunshine Medical Center",
-      location: "Mumbai"
-    },
-    {
-      name: "Dr. Neha Sharma",
-      specialization: "Cardiologist",
-      clinic: "Wellness Point",
-      location: "Bangalore"
-    },
-    {
-      name: "Dr. Amit Sinha",
-      specialization: "Pediatrician",
-      clinic: "Sunshine Medical Center",
-      location: "Mumbai"
+  <script>
+    let allDoctors = [];
+  
+    async function fetchDoctors() {
+      try {
+        const res = await fetch('https://healthcarebackend-vsju.onrender.com/api/getdoctors');
+        allDoctors = await res.json();
+        displayDoctors(allDoctors);
+      } catch (err) {
+        console.error('Failed to fetch doctors:', err);
+      }
     }
-  ];
+  
+    async function fetchFilters() {
+    try {
+      const res = await fetch('https://healthcarebackend-vsju.onrender.com/api/getfilters');
+      const data = await res.json(); // Expect: { specialization: [], clinic: [], address: [] }
 
-  function renderDoctors(doctorsList) {
-    const container = document.getElementById('doctorsContainer');
-    container.innerHTML = "";
-
-    if (doctorsList.length === 0) {
-      container.innerHTML = "<p>No doctors found.</p>";
-      return;
+      populateFilterOptions('specializationFilter', data.specialization);
+      populateFilterOptions('clinicFilter', data.clinic);
+      populateFilterOptions('locationFilter', data.address);
+    } catch (err) {
+      console.error('Failed to fetch filters:', err);
     }
-
-    doctorsList.forEach(doc => {
-      const card = document.createElement('div');
-      card.className = 'doctor-card';
-      card.innerHTML = `
-        <h3>${doc.name}</h3>
-        <p><strong>Specialization:</strong> ${doc.specialization}</p>
-        <p><strong>Clinic:</strong> ${doc.clinic}</p>
-        <p><strong>Location:</strong> ${doc.location}</p>
-      `;
-      container.appendChild(card);
-    });
   }
 
-  function filterDoctors() {
-    const name = document.getElementById('searchInput').value.toLowerCase();
-    const specialization = document.getElementById('specializationFilter').value;
-    const clinic = document.getElementById('clinicFilter').value;
-    const location = document.getElementById('locationFilter').value;
+  
+  function populateFilterOptions(selectId, options) {
+  const select = document.getElementById(selectId);
 
-    const filtered = doctors.filter(doc => {
-      return (
-        (doc.name.toLowerCase().includes(name)) &&
-        (specialization === "" || doc.specialization === specialization) &&
-        (clinic === "" || doc.clinic === clinic) &&
-        (location === "" || doc.location === location)
-      );
-    });
+  let defaultLabel = 'All'; // Default label for specialization filter
+  if (selectId === 'clinic-filter') defaultLabel = 'All Clinics';
+  else if (selectId === 'specialization-filter') defaultLabel = 'All Specializations';
+  else if (selectId === 'location-filter') defaultLabel = 'All Locations';
 
-    renderDoctors(filtered);
-  }
+  select.innerHTML = `<option value="">${selectId}</option>`; // Set the default text dynamically
 
-  // Initial rendering
-  renderDoctors(doctors);
-</script>
+  options.forEach(opt => {
+    const option = document.createElement('option');
+    option.value = opt;
+    option.textContent = opt;
+    select.appendChild(option);
+  });
+}
 
+  
+    function displayDoctors(doctors) {
+      const container = document.getElementById('doctorsContainer');
+      container.innerHTML = "";
+  
+      doctors.forEach(doc => {
+        const card = document.createElement('div');
+        card.className = 'doctorCard';
+        card.style = `
+          background: white;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          padding: 20px;
+          width: 100%;
+          display: flex;
+        `;
+  
+        const left = document.createElement('div');
+        left.style = 'width: 40%; padding-right: 15px; border-right: 1px solid #eee; text-align: center;';
+        left.innerHTML = `
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;" />
+          <h3 style="color: #2c3e50;">Dr. ${doc.first_name} ${doc.last_name}</h3>
+          <p><strong>Email:</strong> ${doc.email}</p>
+          <p><strong>Mobile:</strong> ${doc.mobile}</p>
+          <p><strong>Specialization:</strong> ${doc.specialization}</p>
+        `;
+  
+        const right = document.createElement('div');
+        right.style = 'width: 60%; padding-left: 15px;';
+        right.innerHTML = `
+          <p>Dr. ${doc.first_name} ${doc.last_name} graduated with a degree in ${doc.degree} from ${doc.university}.</p>
+          <p>They have ${doc.experience} years of experience in ${doc.specialization}.</p>
+          <p>Currently working at ${doc.clinic} located in ${doc.address}.</p>
+          <p>Available on ${doc.availability} from ${doc.from_time} to ${doc.to_time}.</p>
+          <p>License Number: ${doc.license_number}</p>
+          <p>Aadhar Card: ${doc.aadhar_card}</p>
+          <p>${doc.additional_info}</p>
+        `;
+  
+        card.appendChild(left);
+        card.appendChild(right);
+        container.appendChild(card);
+      });
+    }
+  
+    function filterDoctors() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const specialization = document.getElementById('specializationFilter').value;
+      const clinic = document.getElementById('clinicFilter').value;
+      const location = document.getElementById('locationFilter').value;
+  
+      const filtered = allDoctors.filter(doc => {
+        return (
+          (doc.first_name.toLowerCase().includes(search) || doc.last_name.toLowerCase().includes(search)) &&
+          (specialization === '' || doc.specialization === specialization) &&
+          (clinic === '' || doc.clinic === clinic) &&
+          (location === '' || doc.address === location)
+        );
+      });
+  
+      displayDoctors(filtered);
+    }
+  
+    // Call both functions when the page loads
+    fetchDoctors();
+    fetchFilters();
+  </script>
   
 
    <!-- footer -->

@@ -212,7 +212,7 @@
         <p style="font-size: 1.2rem; color: #444; line-height: 1.6; margin-bottom: 30px;">
           Experience fast, reliable, and affordable diagnostic testing backed by modern technology and expert care. Your health is our priority.
         </p>
-        <button onclick="scrollToBooking()" 
+        <button onclick="scrollToBooking()"  
           style="padding: 14px 32px; font-size: 1rem; font-weight: bold; color: white; background: #2a6de0; border: none; border-radius: 30px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); cursor: pointer; transition: 0.3s;">
           Book Now
         </button>
@@ -220,7 +220,7 @@
   
       <!-- Image Section -->
       <div style="flex: 1; min-width: 280px; text-align: center;">
-        <img src="images/pngwing.com (16).png" alt="Diagnostic Services"
+        <img src="images/diagnosticbg.png" alt="Diagnostic Services"
           style="width: 100%; max-width: 500px;">
       </div>
   
@@ -542,7 +542,7 @@
       }
   
       confirmationBox.style.color = "#388e3c";
-      confirmationBox.innerText = ✅ Your MRI scan is booked for ${date} in ${location.charAt(0).toUpperCase() + location.slice(1)}.;
+      confirmationBox.innerText =` ✅ Your MRI scan is booked for ${date} in ${location.charAt(0).toUpperCase() + location.slice(1)}.`;
     }
   </script>
   
@@ -607,202 +607,191 @@
   </div>
 </div>
 <script>
-// Show the chatbot when the icon is clicked
-document.getElementById('chatbot-icon').addEventListener('click', function() {
-    let chatbotContainer = document.getElementById('chatbot-container');
-    chatbotContainer.style.display = 'block';
-    chatbotContainer.style.transform = 'translateY(0)';
-    chatbotContainer.style.opacity = '1';
-    document.getElementById('chatbot-icon').style.display = 'none'; // Hide icon after opening
-});
+    // Show the chatbot when the icon is clicked
+    document.getElementById('chatbot-icon').addEventListener('click', function() {
+        let chatbotContainer = document.getElementById('chatbot-container');
+        chatbotContainer.style.display = 'block';
+        chatbotContainer.style.transform = 'translateY(0)';
+        chatbotContainer.style.opacity = '1';
+        document.getElementById('chatbot-icon').style.display = 'none'; // Hide icon after opening
+    });
 
-// Handle sending messages
-document.getElementById('send-btn').addEventListener('click', function() {
-    sendMessage();
-});
-
-// Allow sending messages with Enter key
-document.getElementById('user-input').addEventListener('keypress', function(event) {
-    if (event.key === "Enter") {
+    // Handle sending messages
+    document.getElementById('send-btn').addEventListener('click', function() {
         sendMessage();
-    }
-});
+    });
 
-function sendMessage() {
-    var userInput = document.getElementById('user-input').value.trim();
-    if (userInput !== '') {
-        var chatArea = document.getElementById('chat-area');
+    // Allow sending messages with Enter key
+    document.getElementById('user-input').addEventListener('keypress', function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
 
-        // User Message
-        var userMessage = document.createElement('div');
-        userMessage.classList.add('message', 'user-message');
-        styleMessage(userMessage, '#3498db', 'white', 'flex-end');
-        userMessage.textContent = userInput;
-        chatArea.appendChild(userMessage);
+    function sendMessage() {
+        var userInput = document.getElementById('user-input').value.trim();
+        if (userInput !== '') {
+            var chatArea = document.getElementById('chat-area');
 
-        // Scroll to the bottom
-        chatArea.scrollTop = chatArea.scrollHeight;
-
-        // Clear the input field
-        document.getElementById('user-input').value = '';
-
-        // Simulate chatbot response after 1 second
-        setTimeout(function() {
-            var botMessage = document.createElement('div');
-            botMessage.classList.add('message', 'bot-message');
-            styleMessage(botMessage, '#2c3e50', 'white', 'flex-start');
-            botMessage.textContent = getBotReply(userInput);
-            chatArea.appendChild(botMessage);
+            // User Message
+            var userMessage = document.createElement('div');
+            userMessage.classList.add('message', 'user-message');
+            styleMessage(userMessage, '#3498db', 'white', 'flex-end');
+            userMessage.textContent = userInput;
+            chatArea.appendChild(userMessage);
 
             // Scroll to the bottom
             chatArea.scrollTop = chatArea.scrollHeight;
-        }, 1000);
+
+            // Clear the input field
+            document.getElementById('user-input').value = '';
+
+            // Simulate chatbot response after 1 second
+            setTimeout(function() {
+                var botMessage = document.createElement('div');
+                botMessage.classList.add('message', 'bot-message');
+                styleMessage(botMessage, '#2c3e50', 'white', 'flex-start');
+                botMessage.textContent = getBotReply(userInput);
+                chatArea.appendChild(botMessage);
+
+                // Scroll to the bottom
+                chatArea.scrollTop = chatArea.scrollHeight;
+            }, 1000);
+        }
     }
-}
 
-function styleMessage(element, bgColor, textColor, align) {
-    element.style.padding = '8px 12px';
-    element.style.borderRadius = '20px';
-    element.style.margin = '5px 0';
-    element.style.maxWidth = '75%';
-    element.style.fontSize = '16px';
-    element.style.backgroundColor = bgColor;
-    element.style.color = textColor;
-    element.style.alignSelf = align;
-}
+    function styleMessage(element, bgColor, textColor, align) {
+        element.style.padding = '8px 12px';
+        element.style.borderRadius = '20px';
+        element.style.margin = '5px 0';
+        element.style.maxWidth = '75%';
+        element.style.fontSize = '16px';
+        element.style.backgroundColor = bgColor;
+        element.style.color = textColor;
+        element.style.alignSelf = align;
+    }
 
-function getBotReply(userMessage) {
-    userMessage = userMessage.toLowerCase(); // Convert to lowercase for consistency
+    function getBotReply(userMessage) {
+        userMessage = userMessage.toLowerCase(); // Convert to lowercase for consistency
 
-      const responses = {
-          "hi": "Hello, How are you?",
-          "hello": "Hi, How are you?",
-          "how are you": "I'm just a bot, but I'm doing great! How about you?",
-          "good morning": "Good morning! Have a fantastic day ahead!",
-          "good night": "Good night! Sweet dreams!",
-          "thank you": "You're welcome! 😊",
-          "what's your name": "I'm your friendly chatbot!",
-          "who created you": "I was created by Naveen Teja! 😉",
-          "who is your master": "My Master is NaveenTeja. He holds root access to my system.",
-          "bye": "Goodbye! Have a great day!",
-          "what can you do": "I can chat with you! Ask me anything. 😊",
+          const responses = {
+              "hi": "Hello, How are you?",
+              "hello": "Hi, How are you?",
+              "how are you": "I'm just a bot, but I'm doing great! How about you?",
+              "good morning": "Good morning! Have a fantastic day ahead!",
+              "good night": "Good night! Sweet dreams!",
+              "thank you": "You're welcome! 😊",
+              "what's your name": "I'm your friendly chatbot!",
+              "who created you": "I was created by Naveen Teja! 😉",
+              "who is your master": "My Master is NaveenTeja. He holds root access to my system.",
+              "bye": "Goodbye! Have a great day!",
+              "what can you do": "I can chat with you! Ask me anything. 😊",
 
-          "what are common health checkups": "Common health checkups include blood tests, cholesterol tests, blood pressure monitoring, diabetes screening, and full-body checkups.",
-          "what is CBC test": "A Complete Blood Count (CBC) test measures different components of your blood, such as red and white blood cells, hemoglobin, and platelets.",
-          "how often should I get a health checkup": "It depends on your age and medical history. Generally, adults should get a checkup once a year.",
-          "what is an MRI scan": "An MRI (Magnetic Resonance Imaging) scan uses magnetic fields and radio waves to create detailed images of organs and tissues in the body.",
-          "how can I check my blood sugar levels": "You can check your blood sugar using a glucometer at home or through a lab test for fasting blood sugar (FBS) and HbA1c levels.",
-          "what are the symptoms of high blood pressure": "Symptoms include headaches, dizziness, blurred vision, and chest pain, though it may not always show noticeable signs.",
-          "what is a lipid profile test": "A lipid profile test measures cholesterol levels in your blood, including LDL, HDL, and triglycerides.",
-          "what is a thyroid test": "A thyroid test checks hormone levels (TSH, T3, and T4) to detect thyroid disorders like hypothyroidism or hyperthyroidism.",
-          "what are the symptoms of diabetes": "Symptoms include frequent urination, excessive thirst, unexplained weight loss, fatigue, and blurred vision.",
-          "how to improve immunity": "Boost your immunity by eating a balanced diet, exercising, getting enough sleep, managing stress, and staying hydrated.",
+              "what are common health checkups": "Common health checkups include blood tests, cholesterol tests, blood pressure monitoring, diabetes screening, and full-body checkups.",
+              "what is CBC test": "A Complete Blood Count (CBC) test measures different components of your blood, such as red and white blood cells, hemoglobin, and platelets.",
+              "how often should I get a health checkup": "It depends on your age and medical history. Generally, adults should get a checkup once a year.",
+              "what is an MRI scan": "An MRI (Magnetic Resonance Imaging) scan uses magnetic fields and radio waves to create detailed images of organs and tissues in the body.",
+              "how can I check my blood sugar levels": "You can check your blood sugar using a glucometer at home or through a lab test for fasting blood sugar (FBS) and HbA1c levels.",
+              "what are the symptoms of high blood pressure": "Symptoms include headaches, dizziness, blurred vision, and chest pain, though it may not always show noticeable signs.",
+              "what is a lipid profile test": "A lipid profile test measures cholesterol levels in your blood, including LDL, HDL, and triglycerides.",
+              "what is a thyroid test": "A thyroid test checks hormone levels (TSH, T3, and T4) to detect thyroid disorders like hypothyroidism or hyperthyroidism.",
+              "what are the symptoms of diabetes": "Symptoms include frequent urination, excessive thirst, unexplained weight loss, fatigue, and blurred vision.",
+              "how to improve immunity": "Boost your immunity by eating a balanced diet, exercising, getting enough sleep, managing stress, and staying hydrated.",
 
-          // Fertility-Related Q&A
-          "how to check fertility in men": "Male fertility is usually tested through a semen analysis, which checks sperm count, motility, and morphology.",
-          "how to check fertility in women": "Female fertility can be assessed through hormone tests (AMH, FSH, LH), ultrasound scans, and ovulation tracking.",
-          "what are common causes of infertility": "Infertility can be caused by hormonal imbalances, blocked fallopian tubes, low sperm count, lifestyle factors, or underlying health conditions.",
-          "what is IVF": "IVF (In Vitro Fertilization) is a fertility treatment where an egg and sperm are combined in a lab and then implanted into the uterus.",
-          "how to increase chances of conception": "Maintain a healthy diet, track ovulation, reduce stress, exercise regularly, and avoid smoking or excessive alcohol consumption.",
-          "what are signs of ovulation": "Signs include mild pelvic pain, increased cervical mucus, a rise in basal body temperature, and changes in hormone levels.",
-          "what foods boost fertility": "Foods rich in antioxidants, omega-3 fatty acids, and folic acid—like leafy greens, nuts, fish, and whole grains—support fertility.",
-          "what is PCOS and how does it affect fertility": "PCOS (Polycystic Ovary Syndrome) is a hormonal disorder that can cause irregular periods and ovulation issues, affecting fertility.",
-          "how long does it take to get pregnant": "It varies, but most couples conceive within a year of trying. If unsuccessful after a year, consult a fertility specialist.",
-          "can stress affect fertility": "Yes, high stress levels can disrupt hormone balance and ovulation, potentially affecting fertility.",
-          "what are the treatment options for infertility": "Treatment options include lifestyle changes, medications, hormone therapy, IUI, IVF, and surgical interventions, depending on the cause.",
-      
-        // fun section
-          "tell me a joke": "Why did the scarecrow win an award? Because he was outstanding in his field!",
+              // Fertility-Related Q&A
+              "how to check fertility in men": "Male fertility is usually tested through a semen analysis, which checks sperm count, motility, and morphology.",
+              "how to check fertility in women": "Female fertility can be assessed through hormone tests (AMH, FSH, LH), ultrasound scans, and ovulation tracking.",
+              "what are common causes of infertility": "Infertility can be caused by hormonal imbalances, blocked fallopian tubes, low sperm count, lifestyle factors, or underlying health conditions.",
+              "what is IVF": "IVF (In Vitro Fertilization) is a fertility treatment where an egg and sperm are combined in a lab and then implanted into the uterus.",
+              "how to increase chances of conception": "Maintain a healthy diet, track ovulation, reduce stress, exercise regularly, and avoid smoking or excessive alcohol consumption.",
+              "what are signs of ovulation": "Signs include mild pelvic pain, increased cervical mucus, a rise in basal body temperature, and changes in hormone levels.",
+              "what foods boost fertility": "Foods rich in antioxidants, omega-3 fatty acids, and folic acid—like leafy greens, nuts, fish, and whole grains—support fertility.",
+              "what is PCOS and how does it affect fertility": "PCOS (Polycystic Ovary Syndrome) is a hormonal disorder that can cause irregular periods and ovulation issues, affecting fertility.",
+              "how long does it take to get pregnant": "It varies, but most couples conceive within a year of trying. If unsuccessful after a year, consult a fertility specialist.",
+              "can stress affect fertility": "Yes, high stress levels can disrupt hormone balance and ovulation, potentially affecting fertility.",
+              "what are the treatment options for infertility": "Treatment options include lifestyle changes, medications, hormone therapy, IUI, IVF, and surgical interventions, depending on the cause.",
+          
+            // fun section
+              "tell me a joke": "Why did the scarecrow win an award? Because he was outstanding in his field!",
 
-      
-        };
+          
+            };
 
-      
-    return responses[userMessage] || "I'm not sure how to respond to that. Can you try something else?";
-}
+          
+        return responses[userMessage] || "I'm not sure how to respond to that. Can you try something else?";
+    }
 
-// Close the chatbot
-document.getElementById('close-chat').addEventListener('click', function() {
-    document.getElementById('chatbot-container').style.display = 'none';
-    document.getElementById('chatbot-icon').style.display = 'flex'; // Show the icon again
-});
+    // Close the chatbot
+    document.getElementById('close-chat').addEventListener('click', function() {
+        document.getElementById('chatbot-container').style.display = 'none';
+        document.getElementById('chatbot-icon').style.display = 'flex'; // Show the icon again
+    });
+
 </script>
 
   <!-- Footer Section -->
 
 
-<footer style="background: #0c2340; color: white; padding: 40px 20px; font-family: 'Segoe UI', sans-serif;">
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: auto; gap: 30px;">
-  
-      <!-- Company Info -->
-      <div style="flex: 1 1 250px;">
-        <h3 style="margin-bottom: 10px;">🧪 Hitaishi&nbsp;healthCare Diagnostics</h3>
-        <p style="line-height: 1.6; color: #ccc;">Your trusted partner for precise, reliable diagnostic solutions including MRI, X-Ray, Ultrasound, and Health Checkups.</p>
-      </div>
-  
-      <!-- Quick Links -->
-      <div style="flex: 1 1 200px;">
-        <h4 style="margin-bottom: 10px;">Quick Links</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li><a href="#mri" style="color: #ccc; text-decoration: none;">MRI Scans</a></li>
-          <li><a href="#x-ray" style="color: #ccc; text-decoration: none;">X-Ray Services</a></li>
-          <li><a href="#ultrasound" style="color: #ccc; text-decoration: none;">Ultrasound</a></li>
-          <li><a href="#locations" style="color: #ccc; text-decoration: none;">Locations</a></li>
-        </ul>
-      </div>
-  
-      <!-- Contact -->
-      <div style="flex: 1 1 200px;">
-        <h4 style="margin-bottom: 10px;">Contact Us</h4>
-        <p style="color: #ccc;">📍&nbsp;Pragati&nbsp;Nagar,kukatypally,Hyderbad,Telangana, India</p>
-        <p style="color: #ccc;">📞 +91 87901 70525</p>
-        <p style="color: #ccc;">✉ support@hitaishihealthCare.in</p>
-      </div>
-  
-      <!-- Social Media -->
-      <div style="flex: 1 1 200px;">
-        <h4 style="margin-bottom: 10px;">Follow Us</h4>
-        <div style="display: flex; gap: 15px;">
-          <!-- <a href="#" title="Facebook" style="color: white;">
-            <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M22 12.07C22 6.48 17.52 2 12 2S2 6.48 2 12.07c0 4.99 3.66 9.12 8.44 9.88v-6.99H8.1v-2.89h2.34V9.41c0-2.3 1.37-3.58 3.47-3.58.99 0 2.03.18 2.03.18v2.25h-1.14c-1.13 0-1.48.7-1.48 1.42v1.71h2.53l-.4 2.89h-2.13v6.99C18.34 21.2 22 17.06 22 12.07z"/></svg>
-          </a>
-          <a href="#" title="Twitter" style="color: white;">
-            <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.59-2.46.7a4.29 4.29 0 0 0 1.88-2.37c-.84.5-1.77.86-2.76 1.05a4.27 4.27 0 0 0-7.3 3.89A12.14 12.14 0 0 1 3.16 4.6a4.26 4.26 0 0 0 1.32 5.7 4.2 4.2 0 0 1-1.94-.54v.06c0 2 1.42 3.66 3.3 4.04a4.28 4.28 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.97A8.57 8.57 0 0 1 2 19.54 12.1 12.1 0 0 0 8.29 21c7.55 0 11.68-6.26 11.68-11.69 0-.18 0-.35-.01-.53A8.36 8.36 0 0 0 22.46 6z"/></svg>
-          </a>
-          <a href="#" title="Instagram" style="color: white;">
-            <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M7 2C4.8 2 3 3.8 3 6v12c0 2.2 1.8 4 4 4h10c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4H7zm10 2c1.1 0 2 .9 2 2v2h-2V4zM7 4h6v2H7c-1.1 0-2 .9-2 2v2h2v8H5v-2h2v-2H5v-2h2v-2H5V8c0-1.1.9-2 2-2zm5 3a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
-
-          </a> -->
-          <!-- <div style="display: flex; align-items: center; gap: 15px;"> -->
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="#" style="color: white; font-size: 20px; text-decoration: none;">
-                <i class="fab fa-whatsapp"></i>
-            </a>
+   <!-- footer -->
+    <footer style="background-color: black; color: white; padding: 30px 10%; font-family: Arial, sans-serif; margin-top: 30px;">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Quick Links</h3>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
+                <a href="about.html#why-choose-u" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Services</h3>
+                <a href="clinics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
+                <a href="Diagnostics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
+                <a href="healthRecords.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
+                <a href="blood.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
+                <a href="doctors.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Contact Us</h3>
+                <a href="inventory.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
+                <a href="inventory.html#faq" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
+            </div>
+            <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Subscribe to News Letter</h3>
+                <input type="email" placeholder="Enter your email" style="padding: 10px; margin-bottom: 10px; width: 80%; border: none; border-radius: 5px;">
+                <button style="padding: 10px; width: 50%; border: none; border-radius: 5px; background-color: teal; color: white; cursor: pointer;">Subscribe</button>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Contact</h3>
+                <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@hitaishihealth.com</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                    <i class="fas fa-phone"></i>
+                    <span>8790170525</span>
+                </div>
+                <h3 style="margin-bottom: 15px; font-size: 18px;">Social Media</h3>
+                <div>
+                    <a href="https://www.instagram.com/hitaishihealthcare/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61575554344989" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/HitaishiHealth" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://in.linkedin.com/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@HitaishiHealthCare" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  
-    <div style="text-align: center; color: #888; font-size: 14px; margin-top: 30px;">
-      © 2025 Hitaishi HelathCare  Diagnostics. All rights reserved.
-    </div>
-  </footer>
+        <div style="text-align: center; padding-top: 20px; border-top: 1px solid gray; margin-top: 20px;">
+            <p>© Copyright 2025 By Hitaishi Health Service. All Rights Reserved</p>
+            <a href="#" style="color: white; text-decoration: none;">Sitemap</a> |
+            <a href="#" style="color: white; text-decoration: none;">Privacy Policy</a> |
+            <a href="#" style="color: white; text-decoration: none;">Terms of Use</a>
+        </div>
+    </footer>
   
 </body>
 </html>

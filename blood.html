@@ -52,8 +52,8 @@
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6;">
     
 
- <!-- Navigation Bar -->
- <nav style="display: flex; justify-content: space-between; align-items: center; background: #007bff; padding: 15px 40px;">
+   <!-- Navigation Bar -->
+   <nav style="display: flex; justify-content: space-between; align-items: center; background: #007bff; padding: 15px 40px;">
     
     <!-- Logo and Title -->
     <div style="display: flex; align-items: center; gap: 15px;">
@@ -245,6 +245,7 @@
     </script>
 
 
+
     
    
 
@@ -405,7 +406,7 @@
                     };
     
                     // Send data to backend API (Assuming your API is hosted at a URL like '/api/register')
-                    fetch('http://localhost:5000/api/register', {
+                    fetch('https://healthcarebackend-vsju.onrender.com/api/register', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -430,11 +431,81 @@
         </div>
   
       <!-- Donor List -->
-      <div id="donorsContent" style="display: none;">
-        <div id="donorCardsContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem;">
-          <!-- Donor cards injected via JS -->
+        <div id="donorsContent" style="display: none;">
+            <style>
+                #donorCardsContainer {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 1rem;
+                    margin-top: 1rem;
+                }
+
+                .donor-card {
+                    border: 1px solid #ccc;
+                    padding: 1rem;
+                    border-radius: 12px;
+                    background-color: #ffffff;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+                    transition: transform 0.2s ease, box-shadow 0.3s ease;
+                }
+
+                .donor-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+                    background-color: #f1faff;
+                }
+
+                .donor-card h3 {
+                    margin-bottom: 0.5rem;
+                    font-size: 1.2rem;
+                    color: #d62828;
+                }
+
+                .donor-card p {
+                    margin: 0.3rem 0;
+                    font-size: 0.95rem;
+                }
+            </style>
+
+            <div id="donorCardsContainer">
+            <div class="donor-card">
+                <h3>Aarav Sharma</h3>
+                <p><strong>Email:</strong> aarav@example.com</p>
+                <p><strong>Mobile:</strong> +91-9876543210</p>
+                <p><strong>Address:</strong> Delhi, India</p>
+                <p><strong>Blood Group:</strong> B+</p>
+                <p><strong>Sex:</strong> Male</p>
+            </div>
+
+            <div class="donor-card">
+                <h3>Meera Nair</h3>
+                <p><strong>Email:</strong> meera@example.com</p>
+                <p><strong>Mobile:</strong> +91-9988776655</p>
+                <p><strong>Address:</strong> Mumbai, India</p>
+                <p><strong>Blood Group:</strong> O-</p>
+                <p><strong>Sex:</strong> Female</p>
+            </div>
+
+            <div class="donor-card">
+                <h3>Rohan Verma</h3>
+                <p><strong>Email:</strong> rohan@example.com</p>
+                <p><strong>Mobile:</strong> +91-9123456789</p>
+                <p><strong>Address:</strong> Bengaluru, India</p>
+                <p><strong>Blood Group:</strong> AB+</p>
+                <p><strong>Sex:</strong> Male</p>
+            </div>
+
+            <div class="donor-card">
+                <h3>Sana Sheikh</h3>
+                <p><strong>Email:</strong> sana@example.com</p>
+                <p><strong>Mobile:</strong> +91-9871234560</p>
+                <p><strong>Address:</strong> Hyderabad, India</p>
+                <p><strong>Blood Group:</strong> A-</p>
+                <p><strong>Sex:</strong> Female</p>
+            </div>
+            </div>
+
         </div>
-      </div>
     </div>
   </section>
   
@@ -465,7 +536,7 @@
         location: document.getElementById('locationInput').value,
         contactNumber: document.getElementById('contactNumber').value
       };
-      fetch('https://hitashihealthcare.com/api/register', {
+      fetch('https://healthcarebackend-vsju.onrender.com/api/register', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData)
       })
       .then(res => res.json())
@@ -477,7 +548,7 @@
   
     async function fetchDonors() {
       try {
-        const res = await fetch('http://localhost:5000/api/donors');
+        const res = await fetch('https://healthcarebackend-vsju.onrender.com/api/donors');
         const donors = await res.json();
         const container = document.getElementById('donorCardsContainer');
         container.innerHTML = '';
@@ -597,33 +668,33 @@
 
 
 
-    <!-- footer -->
+   <!-- footer -->
     <footer style="background-color: black; color: white; padding: 30px 10%; font-family: Arial, sans-serif; margin-top: 30px;">
         <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Quick Links</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">About Us</a>
+                <a href="about.html#why-choose-u" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Our Team</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Accreditation</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Awards And Accolades</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Social Responsibility</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Tele Radiology</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Services</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
+                <a href="clinics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Health Checkups</a>
+                <a href="Diagnostics.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Home Sample Collection</a>
+                <a href="healthRecords.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Download Reports</a>
+                <a href="blood.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Corporate Wellness</a>
+                <a href="doctors.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">COVID-19</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Contact Us</h3>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
-                <a href="#" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
+                <a href="inventory.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Virtual Tour</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Careers</a>
+                <a href="about.html" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Blog</a>
+                <a href="" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">Investors</a>
+                <a href="inventory.html#faq" style="color: white; text-decoration: none; display: block; margin-bottom: 8px; font-size: 14px;">FAQs</a>
             </div>
             <div style="flex: 1; min-width: 200px; margin-bottom: 20px;">
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Subscribe to News Letter</h3>
@@ -642,11 +713,11 @@
                 </div>
                 <h3 style="margin-bottom: 15px; font-size: 18px;">Social Media</h3>
                 <div>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/hitaishihealthcare/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61575554344989" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/HitaishiHealth" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://in.linkedin.com/" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/@HitaishiHealthCare" style="color: white; font-size: 20px; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>
